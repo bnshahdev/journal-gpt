@@ -1,5 +1,6 @@
 "use client";
 
+import { aiAnalyze } from "@/utils/ai";
 import { updateEntry } from "@/utils/api";
 import { useState } from "react";
 import { Autosave, useAutosave } from "react-autosave";

@@ -37,7 +37,7 @@ model Analysis {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   entryId String
-  entry JournalEntry @relation(fields: [entryId], references: [id])
+  entry JournalEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
   mood String
   subject String
   summary String @db.Text
@@ -46,5 +46,6 @@ model Analysis {
   userId String
   user User @relation(fields: [userId], references: [id])
   @@unique([entryId])
+  @@index([userId])
 
 }

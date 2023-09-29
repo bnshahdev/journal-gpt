@@ -26,9 +26,7 @@ const EntryEditor = async ({ params }) => {
 
   return (
     <div className="w-full h-full">
-      <div>
-        <Editor entry={entry} />
-      </div>
+      <Editor entry={entry} />
     </div>
   );
 };

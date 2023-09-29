@@ -30,18 +30,19 @@ const Editor = ({ entry }) => {
   });
 
   return (
-    <div className="w-full h-full grid grid-cols-3">
-      <div className="col-span-2">
+    <div className="w-full h-full grid grid-cols-3 m-2">
+      <div className="col-span-2 w-full h-full">
+        {loading && <div>Saving...</div>}
+
         <textarea
-          className="w-full h-full p-8 text-xl bg-black outline-none"
+          className="w-full h-full p-8 text-xl outline-none"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         ></textarea>
-        {loading && <div>Saving...</div>}
       </div>
 
       <div className="border-l-white">
-        <div className="p-10 bg-blue-300">
+        <div className="p-10">
           <h2 className="text-2xl border-b m-5">Analysis</h2>
           <div>
             <ul>

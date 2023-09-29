@@ -15,6 +15,11 @@ const getEntries = async () => {
     orderBy: {
       createdAt: "desc",
     },
+    select: {
+      analysis: true,
+      createdAt: true,
+      id: true,
+    },
   });
 
   return entries;
@@ -25,8 +30,7 @@ const JournalPage = async () => {
 
   return (
     <div className="p-10">
-      <h2 className="mb-8 text-3xl">Journal</h2>
-      <div className="flex justify-between my-5 align-bottom">
+      <div className="flex justify-between my-5 align-middle">
         <NewEntryCard />
         <AskQuestion />
       </div>

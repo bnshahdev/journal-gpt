@@ -30,10 +30,10 @@ const AskQuestion = () => {
           onChange={onChange}
           value={value}
           type="text"
-          placeholder="Ask a question?"
-          className="border px-6 py-2"
+          placeholder="Ask AI?"
+          className="border px-6 py-2 mr-2"
         />
-        <button disabled={loading} className="rounded-lg bg-blue-400 p-4 px-4">
+        <button disabled={loading} className="rounded-lg bg-blue-400 py-2 px-6">
           Ask
         </button>
       </form>

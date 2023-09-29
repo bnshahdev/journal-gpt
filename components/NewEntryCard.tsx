@@ -11,8 +11,8 @@ const NewEntryCard = () => {
         router.push(`journal/${data.id}`)
     }
 
-    return <div className="cursor-pointer overflow-hidden rounded-sm" onClick={handleOnClick}>
-        <span className="text-1xl">New Entry -></span>
+    return <div className="cursor-pointer" onClick={handleOnClick}>
+        <span className="text-xl rounded-lg p-4 bg-blue-400">New Entry -></span>
     </div>
 }
 

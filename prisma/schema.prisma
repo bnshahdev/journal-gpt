@@ -18,6 +18,7 @@ model User {
   clerkId String @unique
   email String @unique
   entries JournalEntry[]
+  analyses Analysis[]
 }
 
 model JournalEntry {
@@ -42,6 +43,8 @@ model Analysis {
   summary String @db.Text
   color String
   negative Boolean
+  userId String
+  user User @relation(fields: [userId], references: [id])
   @@unique([entryId])
 
 }

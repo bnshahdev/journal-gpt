@@ -1,3 +1,5 @@
+import { error } from "console";
+
 const createUrl = (path: string) => {
   return window.location.origin + path;
 };
@@ -26,5 +28,20 @@ export const createNewEntry = async () => {
   if (res.ok) {
     const data = await res.json();
     return data.data;
+  }
+};
+
+export const askQuestion = async (question) => {
+  const res = await fetch(
+    new Request(createUrl("/api/question"), {
+      method: "POST",
+      body: JSON.stringify({ question }),
+    })
+  );
+
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("something wrong");
   }
 };

@@ -15,11 +15,11 @@ const AskQuestion = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     isLoading(true);
-    const ans = await askQuestion(value);
-    console.log("answer", ans);
+    const { data } = await askQuestion(value);
+    console.log("answer", data);
 
-    // isLoading(false);
-    // setAnswer(ans);
+    isLoading(false);
+    setAnswer(data);
   };
 
   return (
@@ -38,7 +38,11 @@ const AskQuestion = () => {
         </button>
       </form>
       {loading && <div>Loading...</div>}
-      {answer && <div>{answer}</div>}
+      {answer && (
+        <div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow p-2 my-2 w-80">
+          {answer}
+        </div>
+      )}
     </div>
   );
 };

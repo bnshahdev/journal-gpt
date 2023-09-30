@@ -20,7 +20,10 @@ const Editor = ({ entry }) => {
 
   useAutosave({
     data: value,
+    setInterval: 20000,
     onSave: async (_value) => {
+      if (_value === entry.content) return;
+
       setLoading(true);
       const data = await updateEntry(entry.id, _value);
 
@@ -30,31 +33,46 @@ const Editor = ({ entry }) => {
   });
 
   return (
-    <div className="w-full h-full grid grid-cols-3 m-2">
-      <div className="col-span-2 w-full h-full">
+    <div className="w-full h-full flex flex-row justify-around">
+      <div className="h-full flex-grow-0 w-1/2">
         {loading && <div>Saving...</div>}
 
         <textarea
           className="w-full h-full p-8 text-xl outline-none"
           value={value}
+          placeholder="Type note here.."
           onChange={(e) => setValue(e.target.value)}
         ></textarea>
       </div>
 
       <div className="border-l-white">
-        <div className="p-10">
-          <h2 className="text-2xl border-b m-5">Analysis</h2>
+        <div className="mx-5 flex flex-col justify-end">
+          <h2 className="text-3xl border-b m-10">Summary</h2>
           <div>
             <ul>
-              {analysisData.map((data) => {
+              <li>
+                <span className="text-xl font-semibold">{subject}</span>
+              </li>
+              <li>
+                <span className="text-lg">{summary}</span>
+              </li>
+              {/* <li>
+                <span className="text-lg">{negative}</span>
+              </li> */}
+              <li>
+                <br />
+                {mood && "Your mood likely to be -"}{" "}
+                <span className="text-lg">{mood}</span>
+              </li>
+              {/* {analysisData.map((data) => {
                 return (
-                  <li key={data.id} className="flex justify-between">
+                  <li key={data.title} className="flex justify-between">
                     <span className="text-lg font-semibold">{data.title}</span>
                     <br />
                     <span>{data.value}</span>
                   </li>
                 );
-              })}
+              })} */}
             </ul>
           </div>
         </div>

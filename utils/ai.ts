@@ -76,5 +76,5 @@ export const qa = async (question, entries) => {
     question,
   });
 
-  return res.output_text;
+  return res.text;
 };
